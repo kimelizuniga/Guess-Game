@@ -49,6 +49,7 @@ h4 {
 .bgDivider {
     background-color: rgba(0,190,255,0.9);
     width: 20vw;
+    position: relative;
 }
 
 .bgDivider h1 {
