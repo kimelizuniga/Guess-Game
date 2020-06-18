@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/65c28df05f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    
+</head>
+<body>
+    <div id="contain">
+        <div class="row">
+            <div class="grid-item bgDivider">
+                <h1>Rules</h1>
+            </div>
+            <div class="grid-item midBg">
+                <h1 id="title">GUESS THE NUMBER<span id="labelNum">1-100</span></h1>
+                <div id="roundDiv">
+                    <h2>Round: <span id="numRound">-</span></h2>
+                    <div id="cheatActivate">
+                        <p>? = <span id="cheatMod"></span> </p>
+                    </div>
+                </div>
+                <div class="divider">
+                    <h4 id="easy" class="displayInline difficulty">Easy</h4>
+                    <h4 id="normal" class="displayInline difficulty">Normal</h4>
+                    <h4 id="hard" class="displayInline difficulty">Hard</h4>
+                </div>
+                <div class="divider">
+                    <label class="displayInline" for="health"><i class="health fas fa-heart">:</i></label>
+                    <p class="displayInline" name="health" id="health">10</p>
+                </div>
+                <div class="previewGuess">
+                    <div>
+                        <p>Previous Guesses:</p>
+                        <span  class="previousGuess">-</span>
+                    </div>
+                    <div>
+                        <p>Correct Guesses</p>
+                        <span  class="previousCorrect">-</span>
+                    </div>
+                </div>
+                <div id="startGame">
+                    <input type="submit" value="Start" id="startButton">
+                </div>
+                <div id="gameInputs">
+                    <input class="displayBlock" type="number" id="userGuess" autocomplete="off">
+                    <input type="submit" value="Submit" id="submitGuess">
+                    <input type="submit" value="Reset" id="resetGame">
+                </div>
+                <h4 id="lastResult"></h4>
+                <span id="correctNumber"></span>
+                </div>
+                <h3 class="ptsPosition">Points: <span id="points">0</span></h3>
+            <div class="grid-item bgDivider">
+                <h1>Highscore</h1>
+                <div class="rowTwo">
+                    <div>
+                        <h2>Name</h2>
+                        <ol>
+                            <!-- <ol id="playerNames"></ol> -->
+                        <% players.forEach((player)=> { %>
+                            <li><%= player.name %></li>
+                        <% }) %>
+                        </ol>
+                        
+                    </div>
+                    <div>
+                        <h2>Score</h2>
+                        <ul id="playerScores">
+                            <% players.forEach((player)=> { %>
+                                <li><%= player.points%></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modal" tabindex="-1">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Please enter your name</h3> 
+                <form action="/" method="POST">
+                    <input type="text" name="playerName" id="playerName" autofocus>
+                    <input type="submit" value="Submit" id="submitName">
+                    <input type="text" name="playerScore" id="playerScore">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/scripts/index.js"></script>
+</body>
+</html>
