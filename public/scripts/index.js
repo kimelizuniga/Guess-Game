@@ -50,12 +50,12 @@ easy.style.textDecoration = 'underline';
 
 // Adjust viewport size to constant vh of device when loaded
 let viewPort = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+document.documentElement.style.setProperty('--vh', `${viewPort}px`);
 
 window.addEventListener('resize', () => {
     
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    let viewPort = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${viewPort}px`);
   });
 
 // Logic when game is over //
