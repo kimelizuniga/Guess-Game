@@ -186,7 +186,7 @@ function normalGame() {
     easy.style.textDecoration = 'none'
     normal.style.textDecoration = 'underline'
     hard.style.textDecoration = 'none'
-    difficultyMultiplier = 200;
+    difficultyMultiplier = 300;
     addHealth = 2;
     gameReset();
 }

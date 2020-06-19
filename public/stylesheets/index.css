@@ -10,6 +10,15 @@ body {
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    display: none;
+    color: orange;
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 3px 3px 3px black;
+}
+
 p {
     margin-top: 0.5rem;
     margin-bottom: 0;
@@ -49,7 +58,7 @@ h4 {
 
 .bgDivider {
     background-color: rgba(0,190,255,0.9);
-    width: 20vw;
+    width: 25vw;
     height: 100%;
 }
 
@@ -62,7 +71,7 @@ h4 {
     background: linear-gradient(rgba(255,255,255,0.9), rgba(255, 255, 255, 0.9)), url('https://thumbs.dreamstime.com/b/question-mark-seamless-pattern-isolated-white-background-question-mark-seamless-pattern-isolated-white-background-vector-102511631.jpg');
     background-size: cover;
     background-position: center;
-    width: 60vw;
+    width: 50vw;
 }
 
 .midBg h1 {
@@ -76,6 +85,8 @@ h4 {
     top: 89%;
     z-index: 2;
 }
+
+
 
 .row {
     display: grid;
@@ -99,14 +110,7 @@ h4 {
     background-color: white;
 }
 
-#previousGuess {
-    display: block;
-}
 
-#previousCorrect {
-    displaY: block;
-    margin-bottom: 0.5rem;
-}
 
 .grid-item {
     height: calc(var(--vh, 1vh) * 100);
@@ -124,6 +128,15 @@ h4 {
     margin-top: 1rem;
 }
 
+.navLinks {
+    margin-top: 5rem;
+    font-size: 0.8rem;
+}
+
+.toGuide {
+    margin-right: 11rem;
+}
+
 /***** SCORES *****/
 
 
@@ -134,11 +147,10 @@ h4 {
 }
 
 
-#title {
-    margin-top: 3rem;
-    color: rgba(0,190,255,0.9);
-    font-size: 3rem;
-    text-shadow: 3px 3px 3px grey;
+.absoluteNav {
+    position: absolute;
+    left: 3%;
+    bottom: 3%;
 }
 
 
@@ -217,6 +229,7 @@ h4 {
 
 #roundDiv {
     color: red;
+    text-shadow: 3px 3px 3px #2288DD;
 }
 
 #roundDiv h2 {
@@ -230,6 +243,42 @@ h4 {
 #cheatActivate {
     display: none;
 }
+
+#previousGuess {
+    display: block;
+}
+
+#previousCorrect {
+    displaY: block;
+    margin-bottom: 0.5rem;
+}
+
+
+#title {
+    margin-top: 3rem;
+    color: rgba(0,190,255,0.9);
+    font-size: 3rem;
+    text-shadow: 3px 3px 3px black;
+}
+
+#guideContent {
+    text-align: left;
+    margin-left: 1rem;
+}
+
+#guideContent {
+    margin-bottom: 4rem;
+}
+
+#guideContent span{
+    font-weight: bold;
+}
+
+#guideContent p {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
 
 /****** MODAL *******/
 
@@ -290,8 +339,18 @@ h4 {
     body {
         overflow: auto;
     }
+    
+    a {
+        display: inline-block;
+    }
+
+    
     .row{
         height: 100%;
+    }
+
+    .navLinks {
+        margin-top: 6.5rem;
     }
 
     .row {
@@ -323,5 +382,12 @@ h4 {
     #title {
         margin-top: 1rem;
     }
+
+    #guide a {
+        display: block;
+        margin-top: 2rem;
+    }
+
+    
    
 }

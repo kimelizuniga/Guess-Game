@@ -12,8 +12,21 @@
 <body>
     <div id="contain">
         <div class="row">
-            <div class="grid-item bgDivider">
-                <h1>Rules</h1>
+            <div id="guide" class="grid-item bgDivider">
+                <h1>Guide</h1>
+                <div id="guideContent">
+                    <h3>Gameplay</h3>
+                    <p>Lose 1 <i class="health fas fa-heart"></i> on each wrong guess</p>
+                    <p>GAME OVER when <i class="health fas fa-heart"></i> reaches 0</p>
+                    <p>A new Round will start on every successful guess</p>
+                    <h3>Difficulties</h3>
+                    <p><span>Easy</span> - Gain 1 <i class="health fas fa-heart"></i> and 100 Points on a successful guess</p>
+                    <p><span>Normal</span>- Gain 2 <i class="health fas fa-heart"></i> and 300 Points on a successful guess</p>
+                    <p><span>Hard</span> - Gain 3 <i class="health fas fa-heart"></i> and 600 Points on a successful guess</p>
+                </div>
+                
+                <a href="#mainDiv"><h3>Let's Play!</h3></a>
+                <a href="#highScoreDiv"><h3>View Highscores</h3></a>
             </div>
             <div id="mainDiv" class="grid-item midBg">
                 <h1 id="title">GUESS THE NUMBER<span id="labelNum">1-100</span></h1>
@@ -52,6 +65,10 @@
                 </div>
                 <h4 id="lastResult"></h4>
                 <span id="correctNumber"></span>
+                <div class="navLinks absoluteNav">
+                    <a class="toGuide" href="#guide">Read the Guide</a>
+                    <a class="toScore" href="#highScoreDiv">View Highscore</a>
+                </div>
                 </div>
                 <h3 class="ptsPosition">Points: <span id="points">0</span></h3>
             <div id="highScoreDiv" class="grid-item bgDivider">
@@ -89,6 +106,10 @@
                         </ul>
                     </div>
                 </div>
+                <div class="navLinks absoluteNav">
+                    <a class="toGuide" href="#guide">Read the Guide</a>
+                    <a class="toScore" href="#highScoreDiv">View Highscore</a>
+                </div>
             </div>
         </div>
         <div id="myModal" class="modal" tabindex="-1">
@@ -96,7 +117,7 @@
                 <span class="close">&times;</span>
                 <h3>Please enter your name</h3> 
                 <form action="/" method="POST">
-                    <input type="text" name="playerName" id="playerName" autofocus>
+                    <input type="text" name="playerName" id="playerName" maxlength="10" autofocus>
                     <input type="submit" value="Submit" id="submitName">
                     <input type="text" name="playerScore" id="playerScore">
                 </form>
