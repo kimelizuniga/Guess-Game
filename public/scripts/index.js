@@ -48,9 +48,9 @@ let addHealth = 1;
 easy.style.textDecoration = 'underline';
 
 
-// Adjust viewport size to constant vh of device when loaded
-let viewPort = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${viewPort}px`);
+// // Adjust viewport size to constant vh of device when loaded
+// let viewPort = window.innerHeight * 0.01;
+// document.documentElement.style.setProperty('--vh', `${viewPort}px`);
 
 // Logic when game is over //
 
