@@ -54,25 +54,38 @@
                 <span id="correctNumber"></span>
                 </div>
                 <h3 class="ptsPosition">Points: <span id="points">0</span></h3>
-            <div class="grid-item bgDivider">
+            <div id="highScoreDiv" class="grid-item bgDivider">
                 <h1>Highscore</h1>
                 <div class="rowTwo">
                     <div>
                         <h2>Name</h2>
                         <ol>
-                            <!-- <ol id="playerNames"></ol> -->
-                        <% players.forEach((player)=> { %>
+                        <!-- <% players.forEach((player)=> { %>
                             <li><%= player.name %></li>
-                        <% }) %>
+                        <% }) %> -->
+                        <% for(let i=0; i < 20 || i < players.length; i++){ %>
+                            <% for(let keyName in players[i]){ %>
+                               <% if(keyName == 'name') { %>
+                                    <li><%= players[i][keyName] %></li>
+                               <% } %>
+                            <% } %>
+                        <% } %>
                         </ol>
                         
                     </div>
                     <div>
                         <h2>Score</h2>
                         <ul id="playerScores">
-                            <% players.forEach((player)=> { %>
+                            <!-- <% players.forEach((player)=> { %>
                                 <li><%= player.points%></li>
-                            <% }) %>
+                            <% }) %> -->
+                            <% for(let i=0; i < 20 || i < players.length; i++){ %>
+                                <% for(let keyName in players[i]){ %>
+                                   <% if(keyName == 'points') { %>
+                                        <li><%= players[i][keyName] %></li>
+                                   <% } %>
+                                <% } %>
+                            <% } %>
                         </ul>
                     </div>
                 </div>

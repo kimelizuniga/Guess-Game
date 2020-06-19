@@ -75,7 +75,7 @@ function gameStart() {
 // Checks if user input is wrong or correct //
 
 function checkGuess() {
-    if(userGuess.value != "" && userGuess.value <= difficultyMultiplier){
+    if(userGuess.value != "" && userGuess.value <= difficultyMultiplier && userGuess.value != 0){
         if (userGuess.value != randomNumber){
             health.textContent = numOfHealth -= 1;
            if(userGuess.value < randomNumber){
@@ -86,7 +86,7 @@ function checkGuess() {
                lastResult.textContent = 'Lower'
                lastResult.style.color = 'red'
                userGuess.value = "";
-           } 
+           }
         } else {
             lastResult.textContent = 'CORRECT!';
             lastResult.style.color = 'green'
@@ -110,18 +110,20 @@ function checkGuess() {
             health.style.color = 'red'
         } 
         
-    } else if(userGuess.value > difficultyMultiplier){
+    } else if(userGuess.value > difficultyMultiplier || userGuess.value == 0){
         lastResult.textContent = "You have entered an invalid number"
+        lastResult.style.color = 'red'
     }
 }
 
 // When user pressed the key 'Enter', submits the user input for guess
 
 userGuess.addEventListener('keyup', function(event){
-    if(event.keyCode === 13 && this.value != "" && this.value <= difficultyMultiplier){
+    if(event.keyCode === 13 && this.value != "" && this.value <= difficultyMultiplier && userGuess.value != 0){
         checkGuess();
-    } else if(userGuess.value > difficultyMultiplier){
+    } else if(userGuess.value > difficultyMultiplier || userGuess.value == 0){
         lastResult.textContent = "You have entered an invalid number"
+        lastResult.style.color = 'red'
     } else {
         lastResult.innerHTML = "...";
         lastResult.style.color = 'black';
