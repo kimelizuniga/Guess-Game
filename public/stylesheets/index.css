@@ -289,12 +289,12 @@ h4 {
 
     .bgDivider {
         width: 100%;
-        
+        position: sticky;
     }
 
     .midBg {
         width: 100%;
-        z-index: 1;
+        position: sticky
     }
 
     .previewGuess {
@@ -303,13 +303,7 @@ h4 {
 
     .ptsPosition {
         top: 189%;
-    }
-
-    #userGuess:focus + #highScoreDiv {
-        height: 10px;
-    }
-
-    
+    } 
 
     #title {
         margin-top: 1rem;
