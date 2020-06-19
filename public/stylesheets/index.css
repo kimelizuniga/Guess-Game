@@ -99,11 +99,11 @@ h4 {
     background-color: white;
 }
 
-.previousGuess {
+#previousGuess {
     display: block;
 }
 
-.previousCorrect {
+#previousCorrect {
     displaY: block;
     margin-bottom: 0.5rem;
 }
@@ -151,7 +151,7 @@ h4 {
 }
 
 #lastResult {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-bottom: 0;
 }
 
@@ -221,6 +221,10 @@ h4 {
 
 #roundDiv h2 {
     color: black;
+}
+
+#playerScore {
+    display:none;
 }
 
 #cheatActivate {

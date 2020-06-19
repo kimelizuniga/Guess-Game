@@ -1,4 +1,6 @@
 const   userGuess = document.getElementById('userGuess'),
+        previousGuess = document.getElementById('previousGuess'),
+        previousCorrect = document.getElementById('previousCorrect'),
         lastResult = document.getElementById('lastResult'),
         numRound  = document.getElementById('numRound'),
         roundDiv  = document.getElementById('roundDiv'),
@@ -32,25 +34,14 @@ let roundNum = 2;
 let currentPoints = 0;
 let addHealth = 1;
 
-// const highScores = [
-//     {
-//         name: 'Guest',
-//         points: '1000'
-//     }
-//  ];
-
-// for(let i = 0; i < highScores.length; i++){
-//     playerNames.innerHTML +=  '<li>' + highScores[i].name + '</li>'
-//     playerScores.innerHTML += '<li>' + highScores[i].points + '</li>'
-// }
+let prevGuess = [];
+let prevCorrect = [];
+let pGuessVal = "";
+let pCorrectVal = "";
 
 
 easy.style.textDecoration = 'underline';
 
-
-// // Adjust viewport size to constant vh of device when loaded
-// let viewPort = window.innerHeight * 0.01;
-// document.documentElement.style.setProperty('--vh', `${viewPort}px`);
 
 // Logic when game is over //
 
@@ -63,6 +54,7 @@ function gameOver() {
     playerScore.value = currentPoints;
     
  }
+
 
 // Logic when Start button is clicked
 
@@ -82,6 +74,18 @@ function checkGuess() {
     if(userGuess.value != "" && userGuess.value <= difficultyMultiplier && userGuess.value != 0){
         if (userGuess.value != randomNumber){
             health.textContent = numOfHealth -= 1;
+            
+            prevGuess.push(` ${userGuess.value} ,`)
+            
+            for(let i = 0; i < prevGuess.length; i++){
+                pGuessVal = pGuessVal + prevGuess[i]
+                previousGuess.innerHTML = pGuessVal;    
+            }
+            if(prevGuess.length == 5){
+                prevGuess.shift()
+            }
+            pGuessVal = "";
+
            if(userGuess.value < randomNumber){
                lastResult.textContent = 'Higher'
                lastResult.style.color = 'red'
@@ -94,14 +98,26 @@ function checkGuess() {
         } else {
             lastResult.textContent = 'CORRECT!';
             lastResult.style.color = 'green'
-            userGuess.value = "";
+            
             health.textContent = numOfHealth += addHealth;
             numRound.innerHTML = roundNum++;
-           
+            
             points.textContent = currentPoints += difficultyMultiplier;
 
             randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
             cheat.innerHTML = randomNumber;
+
+            prevCorrect.push(` ${userGuess.value} ,`)
+            
+            for(let i = 0; i < prevCorrect.length; i++){
+                pCorrectVal = pCorrectVal + prevCorrect[i]
+                previousCorrect.innerHTML = pCorrectVal;    
+            }
+            if(prevCorrect.length == 5){
+                prevCorrect.shift()
+            }
+            pCorrectVal = "";
+            userGuess.value = "";
         } 
     
         if(health.textContent == 0){
@@ -125,12 +141,9 @@ function checkGuess() {
 userGuess.addEventListener('keyup', function(event){
     if(event.keyCode === 13 && this.value != "" && this.value <= difficultyMultiplier && userGuess.value != 0){
         checkGuess();
-    } else if(userGuess.value > difficultyMultiplier || userGuess.value == 0){
+    } else if(event.keyCode === 13 && (userGuess.value > difficultyMultiplier || userGuess.value == 0)){
         lastResult.textContent = "You have entered an invalid number"
         lastResult.style.color = 'red'
-    } else {
-        lastResult.innerHTML = "...";
-        lastResult.style.color = 'black';
     }
 })
 
@@ -149,6 +162,10 @@ function gameReset() {
     lastResult.style.fontSize = '1rem';
     correctNum.textContent = "";
     numRound.textContent = "-"
+    previousCorrect.innerHTML = "-"
+    previousGuess.innerHTML = "-"
+    prevCorrect = [];
+    prevGuess = [];
     roundNum = 2;
 }
 
@@ -197,31 +214,6 @@ window.onclick = function(event) {
         modalNone();
     }
 }
-
-// // Highscore Name and Points Logic
-
-
-// function addScore() {
-//     modalNone();
-
-//     let playerProfile = {
-//         name: playerName.value,
-//         points: currentPoints
-//     };
-
-//     highScores.push(playerProfile);
-//     playerNames.innerHTML = ''
-//     playerScores.innerHTML = ''
-
-//     for(let i = 0; i < highScores.length; i++){
-//         playerNames.innerHTML +=  '<li>' + highScores[i].name + '</li>'
-//         playerScores.innerHTML += '<li>' + highScores[i].points + '</li>'
-//     }
-// }
-
-
-
-// submitName.addEventListener('click', addScore)
 
 // Event listeners //
 
