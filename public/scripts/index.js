@@ -52,12 +52,6 @@ easy.style.textDecoration = 'underline';
 let viewPort = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${viewPort}px`);
 
-window.addEventListener('resize', () => {
-    
-    let viewPort = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${viewPort}px`);
-  });
-
 // Logic when game is over //
 
 function gameOver() {
