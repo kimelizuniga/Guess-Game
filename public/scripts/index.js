@@ -219,7 +219,6 @@ window.onclick = function(event) {
 
 // submitName.addEventListener('click', addScore)
 
-
 // Event listeners //
 
 startButton.addEventListener('click', gameStart)
