@@ -305,9 +305,11 @@ h4 {
         top: 189%;
     }
 
-    #highScoreDiv {
-        z-index: -1;
+    #userGuess:focus + #highScoreDiv {
+        height: 10px;
     }
+
+    
 
     #title {
         margin-top: 1rem;

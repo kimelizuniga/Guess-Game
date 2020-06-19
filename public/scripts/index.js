@@ -19,6 +19,7 @@ const   userGuess = document.getElementById('userGuess'),
         playerScores    = document.getElementById('playerScores'),
         playerName      = document.getElementById('playerName'),
         submitName      = document.getElementById('submitName'),
+        highScoreDiv    = document.getElementById('highScoreDiv'),
         cheat           = document.getElementById('cheatMod'),
         resetGame = document.getElementById('resetGame')
 
@@ -46,7 +47,16 @@ let addHealth = 1;
 
 easy.style.textDecoration = 'underline';
 
+function increaseHeight() {
+    if(userGuess === document.activeElement) {
+        highScoreDiv.style.height = '200vh'
+    } else {
+        highScoreDiv.style.height = '100vh'
+    }
+}
 
+userGuess.addEventListener('blur', increaseHeight);
+userGuess.addEventListener('focus', increaseHeight);
 
 // Logic when game is over //
 
