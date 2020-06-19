@@ -48,6 +48,16 @@ let addHealth = 1;
 easy.style.textDecoration = 'underline';
 
 
+// Adjust viewport size to constant vh of device when loaded
+let viewPort = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {
+    
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+
 // Logic when game is over //
 
 function gameOver() {
