@@ -47,16 +47,6 @@ let addHealth = 1;
 
 easy.style.textDecoration = 'underline';
 
-function increaseHeight() {
-    if(userGuess === document.activeElement) {
-        mainDiv.style.height = '200vh'
-    } else {
-        mainDiv.style.height = '100vh'
-    }
-}
-
-userGuess.addEventListener('blur', increaseHeight);
-userGuess.addEventListener('focus', increaseHeight);
 
 // Logic when game is over //
 
