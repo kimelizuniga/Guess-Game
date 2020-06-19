@@ -13,7 +13,9 @@ const   userGuess = document.getElementById('userGuess'),
         normal        = document.getElementById('normal'),
         hard        = document.getElementById('hard'),
         labelDifficulty = document.getElementById('labelNum'),
+        diffOptions     = document.getElementById('difficultyOptions'),
         points          = document.getElementById('points'),
+        ptsPosition     = document.getElementById('ptsPosition'),
         span            = document.getElementsByClassName('close')[0],
         modal           = document.getElementById('myModal'),
         playerNames     = document.getElementById('playerNames'),
@@ -30,6 +32,7 @@ const   userGuess = document.getElementById('userGuess'),
 let difficultyMultiplier = 100;
 let randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
 let numOfHealth = 10;
+let numHealth = "";
 let roundNum = 2;
 let currentPoints = 0;
 let addHealth = 1;
@@ -38,9 +41,19 @@ let prevGuess = [];
 let prevCorrect = [];
 let pGuessVal = "";
 let pCorrectVal = "";
+health.style.display = 'none';
 
+function setHealth(){
+    for(let i = 0; i < numOfHealth; i++){
+        health.innerHTML += ' <i class="health fas fa-heart"></i> '
+    }
+}
+
+setHealth();
 
 easy.style.textDecoration = 'underline';
+
+// Function for Adding or Subtracting Health Icon
 
 
 // Logic when game is over //
@@ -66,6 +79,8 @@ function gameStart() {
     cheat.innerHTML = randomNumber;
     userGuess.focus();
     currentPoints = 0;
+    diffOptions.style.display = 'none'
+    health.style.display = 'unset'
 }
 
 // Checks if user input is wrong or correct //
@@ -73,8 +88,15 @@ function gameStart() {
 function checkGuess() {
     if(userGuess.value != "" && userGuess.value <= difficultyMultiplier && userGuess.value != 0){
         if (userGuess.value != randomNumber){
-            health.textContent = numOfHealth -= 1;
+            // health.textContent = numOfHealth -= 1;
+            numOfHealth -= 1;
             
+            for(let i = 0; i < numOfHealth; i++){
+                numHealth += ' <i class="health fas fa-heart"></i> '
+                health.innerHTML = numHealth;
+            }
+            numHealth = "";
+
             prevGuess.push(` ${userGuess.value} ,`)
             
             for(let i = 0; i < prevGuess.length; i++){
@@ -99,7 +121,14 @@ function checkGuess() {
             lastResult.textContent = 'CORRECT!';
             lastResult.style.color = 'green'
             
-            health.textContent = numOfHealth += addHealth;
+            numOfHealth += addHealth;
+
+            for(let i = 0; i < numOfHealth; i++){
+                numHealth += ' <i class="health fas fa-heart"></i> '
+                health.innerHTML = numHealth;
+            }
+            numHealth = "";
+
             numRound.innerHTML = roundNum++;
             
             points.textContent = currentPoints += difficultyMultiplier;
@@ -120,19 +149,23 @@ function checkGuess() {
             userGuess.value = "";
         } 
     
-        if(health.textContent == 0){
+        if(numOfHealth == 0){
             gameOver();
         }
     
-        if(health.textContent <= 6 && health.textContent > 3){
-            health.style.color = 'orange'
-        } else if(health.textContent <=3){
-            health.style.color = 'red'
-        } 
+        // if(health.textContent <= 6 && health.textContent > 3){
+        //     health.style.color = 'orange'
+        // } else if(health.textContent <=3){
+        //     health.style.color = 'red'
+        // } 
         
     } else if(userGuess.value > difficultyMultiplier || userGuess.value == 0){
         lastResult.textContent = "You have entered an invalid number"
         lastResult.style.color = 'red'
+    }
+
+    if(numOfHealth > 14){
+        ptsPosition.style.marginLeft = '8rem'
     }
 }
 
@@ -155,8 +188,9 @@ function gameReset() {
     startButton.style.display = 'block'
     gameInputs.style.display = 'none'
     numOfHealth = 10;
-    health.textContent = 10;
-    health.style.color = '#11DD55'
+    health.innerHTML = "";
+    health.style.display = 'none';
+    setHealth();
     points.innerHTML = 0;
     lastResult.innerHTML = "";
     lastResult.style.fontSize = '1rem';
@@ -167,6 +201,8 @@ function gameReset() {
     prevCorrect = [];
     prevGuess = [];
     roundNum = 2;
+    diffOptions.style.display = 'block'
+
 }
 
 // DIFFICULTIES //
