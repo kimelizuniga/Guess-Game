@@ -277,7 +277,7 @@ h4 {
 
 /* RESPONSIVENESS FOR MOBILE */
 
-@media screen and (max-width: 900px) {
+@media (max-width: 900px) {
     .row {
         grid-template-columns: auto;
     }
