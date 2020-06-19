@@ -16,13 +16,22 @@
                 <h1><i class="fas fa-scroll"></i> Guide <i class="fas fa-scroll"></i></h1>
                 <div id="guideContent">
                     <h3><i class="fas fa-gamepad"></i> Gameplay</h3>
-                    <p>Lose 1 <i class="health fas fa-heart"></i> on each wrong guess</p>
-                    <p>GAME OVER when <i class="health fas fa-heart"></i> reaches 0</p>
+                    <p>Guess a number between <span class="ptsColor">1-100</span> , <span class="ptsColor">1-300</span> , or <span class="ptsColor">1-300</span> depending on difficulty</p>
+                    <p>Lose a <i class="health fas fa-heart"></i> on each wrong guess</p>
+                    <p>GAME OVER when <i class="health fas fa-heart"></i> runs out</p>
                     <p>A new Round will start on every successful guess</p>
                     <h3><i class="fas fa-cog"></i> Difficulties</h3>
-                    <p><i class="iconLeft far fa-grin-beam"></i> <span>Easy</span> - Gain 1 <i class="health fas fa-heart"></i> and 100 Points on a successful guess</p>
-                    <p><i class="iconLeft far fa-grin-beam-sweat"></i> <span>Normal</span>- Gain 2 <i class="health fas fa-heart"></i> and 300 Points on a successful guess</p>
-                    <p><i class="iconLeft far fa-sad-cry"></i> <span>Hard</span> - Gain 3 <i class="health fas fa-heart"></i> and 600 Points on a successful guess</p>
+                    <p><i class="iconLeft far fa-grin-beam"></i> <span>Easy <span class="ptsColor">1-300</span></span> - Gain a <i class="health fas fa-heart"></i> and <span class="ptsColor">100</span> Points on a successful guess</p>
+                    <p><i class="iconLeft far fa-grin-beam-sweat"></i> <span>Normal <span class="ptsColor">1-300</span></span> - Gain 
+                        <% for(let i = 0; i < 2; i++){ %>
+                            <i class="health fas fa-heart"></i>
+                        <% } %>  
+                        and <span class="ptsColor">300</span> Points on a successful guess</p>
+                    <p><i class="iconLeft far fa-sad-cry"></i> <span>Hard <span class="ptsColor">1-300</span></span> - Gain  
+                        <% for(let i = 0; i < 3; i++){ %>
+                            <i class="health fas fa-heart"></i>
+                        <% } %> 
+                        and <span class="ptsColor">600</span> Points on a successful guess</p>
                 </div>
                 
                 <a href="#mainDiv"><h3>Let's Play!</h3></a>
@@ -42,7 +51,6 @@
                     <h4 id="hard" class="displayInline difficulty">Hard</h4>
                 </div>
                 <div id="healthDiv" class="divider">
-                    <!-- <label class="displayInline" for="health"><i class="health fas fa-heart"></i> Health</label> -->
                     <p class="displayInline" name="health" id="health"></p>
                 </div>
                 <div class="previewGuess">
@@ -66,7 +74,7 @@
                 <h4 id="lastResult"></h4>
                 <span id="correctNumber"></span>
                 </div>
-                <h3 id="ptsPosition">Points: <span id="points">0</span></h3>
+                <h3 id="ptsPosition">Points: <span id="points" class="ptsColor">0</span></h3>
             <div id="highScoreDiv" class="grid-item bgDivider">
                 <h1><i class="fas fa-trophy"></i> Highscore <i class="fas fa-trophy"></i></h1>
                 <div class="rowTwo">
@@ -110,7 +118,7 @@
                 <span class="close">&times;</span>
                 <h3>Please enter your name</h3> 
                 <form action="/" method="POST">
-                    <input type="text" name="playerName" id="playerName" maxlength="10" autofocus>
+                    <input type="text" name="playerName" id="playerName" maxlength="10" autofocus autocomplete="off">
                     <input type="submit" value="Submit" id="submitName">
                     <input type="text" name="playerScore" id="playerScore">
                 </form>

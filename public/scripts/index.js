@@ -65,7 +65,6 @@ function gameOver() {
     roundNum = 2;
     playerName.focus();
     playerScore.value = currentPoints;
-    
  }
 
 
@@ -81,6 +80,7 @@ function gameStart() {
     currentPoints = 0;
     diffOptions.style.display = 'none'
     health.style.display = 'unset'
+    window.scrollBy(0, -150);
 }
 
 // Checks if user input is wrong or correct //
@@ -243,10 +243,16 @@ function modalNone() {
     gameReset();
 }
 
+function subName(){
+    submitName.click();
+}
+
 span.addEventListener('click', modalNone)
 
 window.onclick = function(event) {
     if(event.target == modal) {
+        
+        subName();
         modalNone();
     }
 }

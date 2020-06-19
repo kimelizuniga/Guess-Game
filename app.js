@@ -8,6 +8,7 @@ const   express   = require('express'),
       
         
 const url =  process.env.MONGOURL || "mongodb://localhost/guess";  
+let currentDate = new Date();
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(() =>{
     console.log("Connected to Database!");
@@ -32,9 +33,15 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    const name = req.body.playerName,
+    let name = req.body.playerName,
           points = req.body.playerScore;
-          newPlayer = {name: name, points: points} ;
+
+    if(name == ""){
+        name = "Guest - " + currentDate.getDay() + "/" + currentDate.getMonth() 
+        + "/" + currentDate.getFullYear()
+    }
+
+    const newPlayer = {name: name, points: points} ;
 
     Player.create(newPlayer, (err, newCreated) => {
         if(err){
