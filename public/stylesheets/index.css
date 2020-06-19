@@ -23,6 +23,7 @@ p {
     margin-bottom: 0;
 }
 
+
 h4 {
     margin: 0;
 }
@@ -306,21 +307,18 @@ h4 {
 #guideContent {
     text-align: left;
     margin-left: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 #guideContent p {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
 }
 
 #guideContent span{
     font-weight: bold;
-}
-
-#guideContent p {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
 }
 
 
