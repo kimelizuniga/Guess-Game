@@ -73,6 +73,7 @@ h4 {
     left: 50%;
     margin-left: -3rem;
     top: 89%;
+    z-index: 2;
 }
 
 .row {
@@ -293,6 +294,7 @@ h4 {
 
     .midBg {
         width: 100%;
+        z-index: 1;
     }
 
     .previewGuess {
@@ -301,10 +303,6 @@ h4 {
 
     .ptsPosition {
         top: 189%;
-    }
-
-    #userGuess:focus {
-        z-index: 1;
     }
 
     #highScoreDiv {
