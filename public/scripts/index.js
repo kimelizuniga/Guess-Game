@@ -19,7 +19,7 @@ const   userGuess = document.getElementById('userGuess'),
         playerScores    = document.getElementById('playerScores'),
         playerName      = document.getElementById('playerName'),
         submitName      = document.getElementById('submitName'),
-        highScoreDiv    = document.getElementById('highScoreDiv'),
+        mainDiv    = document.getElementById('mainDiv'),
         cheat           = document.getElementById('cheatMod'),
         resetGame = document.getElementById('resetGame')
 
@@ -49,9 +49,9 @@ easy.style.textDecoration = 'underline';
 
 function increaseHeight() {
     if(userGuess === document.activeElement) {
-        highScoreDiv.style.height = '200vh'
+        mainDiv.style.height = '200vh'
     } else {
-        highScoreDiv.style.height = '100vh'
+        mainDiv.style.height = '100vh'
     }
 }
 
