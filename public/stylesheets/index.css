@@ -283,7 +283,7 @@ h4 {
 }
 
 #cheatActivate {
-    display: none;
+    display: block;
 }
 
 #previousGuess {

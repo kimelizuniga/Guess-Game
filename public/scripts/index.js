@@ -79,8 +79,7 @@ function gameStart() {
     userGuess.focus();
     currentPoints = 0;
     diffOptions.style.display = 'none'
-    health.style.display = 'unset'
-    window.scrollBy(0, -150);
+    health.style.display = 'unset'  
 }
 
 // Checks if user input is wrong or correct //

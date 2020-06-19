@@ -10,6 +10,7 @@ const   express   = require('express'),
 const url =  process.env.MONGOURL || "mongodb://localhost/guess";  
 let currentDate = new Date();
 
+
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(() =>{
     console.log("Connected to Database!");
 }).catch(err => {
@@ -23,11 +24,11 @@ app.use(express.static("public"));
 // ROUTE //
 
 app.get('/', (req, res) => {
-    Player.find({}, null, {sort: {points: -1}}, (err, allPlayers) => {
+    Player.find({}, (err, allPlayers) => {
         if(err){
             console.log(err)
         } else {
-            res.render('index', {players: allPlayers});
+            res.render('index', {players: allPlayers.sort((a, b) => b.points - a.points)});
         }
     })
 })
