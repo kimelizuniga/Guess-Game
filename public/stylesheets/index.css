@@ -294,7 +294,7 @@ h4 {
 
     .midBg {
         width: 100%;
-        position: sticky
+        position: relative;
     }
 
     .previewGuess {
