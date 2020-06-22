@@ -21,7 +21,7 @@
                     <p>GAME OVER when <i class="health fas fa-heart"></i> runs out</p>
                     <p>A new Round will start on every successful guess</p>
                     <h3><i class="fas fa-cog"></i> Difficulties</h3>
-                    <p><i class="iconLeft far fa-grin-beam"></i> <span>Easy <span class="ptsColor">1-300</span></span> - Gain
+                    <p><i class="iconLeft far fa-grin-beam"></i> <span>Easy <span class="ptsColor">1-100</span></span> - Gain
                         <% for(let i = 0; i < 2; i++){ %>
                             <i class="health fas fa-heart"></i>
                         <% } %>  
@@ -31,7 +31,7 @@
                             <i class="health fas fa-heart"></i>
                         <% } %>  
                         and <span class="ptsColor">150</span> Points on a successful guess</p>
-                    <p><i class="iconLeft far fa-sad-cry"></i> <span>Hard <span class="ptsColor">1-300</span></span> - Gain  
+                    <p><i class="iconLeft far fa-sad-cry"></i> <span>Hard <span class="ptsColor">1-600</span></span> - Gain  
                         <% for(let i = 0; i < 3; i++){ %>
                             <i class="health fas fa-heart"></i>
                         <% } %> 
@@ -117,6 +117,7 @@
                 </div>
             </div>
         </div>
+        
         <div id="myModal" class="modal" tabindex="-1">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -127,8 +128,11 @@
                     <input type="text" name="playerScore" id="playerScore">
                 </form>
             </div>
+            
         </div>
+        
     </div>
+    
     
     <script src="/scripts/index.js"></script>
 </body>
