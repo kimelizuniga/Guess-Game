@@ -1,12 +1,10 @@
-const { kStringMaxLength } = require('buffer');
-
 const   express   = require('express'),
         app       = express(),
         mongoose  = require('mongoose'),
         bodyParser =  require("body-parser"),
+        mongo       = require('mongodb').MongoClient;
         Player    = require('./models/player');
       
-        
 const url =  process.env.MONGOURL || "mongodb://localhost/guess";  
 let currentDate = new Date();
 
@@ -18,8 +16,8 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreat
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs");
-app.use(express.static("public"));
+  app.set("view engine", "ejs");
+  app.use(express.static("public"));
 
 // ROUTE //
 
@@ -28,7 +26,12 @@ app.get('/', (req, res) => {
         if(err){
             console.log(err)
         } else {
-            res.render('index', {players: allPlayers.sort((a, b) => b.points - a.points)});
+            allPlayers.sort((a, b) => b.points - a.points);
+            res.render('index', {players: allPlayers});
+            if(allPlayers.length > 1){
+                
+            }
+            
         }
     })
 })
@@ -38,7 +41,7 @@ app.post('/', (req, res) => {
           points = req.body.playerScore;
 
     if(name == ""){
-        name = "Guest - " + currentDate.getDay() + "/" + currentDate.getMonth() 
+        name = "Guest - " + currentDate.getDate() + "/" + (currentDate.getMonth() + 1) 
         + "/" + currentDate.getFullYear()
     }
 
@@ -47,8 +50,11 @@ app.post('/', (req, res) => {
     Player.create(newPlayer, (err, newCreated) => {
         if(err){
             console.log(err);
-        } else {
-            res.redirect('/')
+        } else if(points == 0){
+            res.redirect('/#mainDiv')
+        }
+          else {
+            res.redirect('/#highScoreDiv')
         }
     })
 })
@@ -63,3 +69,6 @@ if (port == null || port == "") {
 app.listen(port, () => {
     console.log("Server started " + port);
 });
+
+
+

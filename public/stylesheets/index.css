@@ -143,11 +143,12 @@ h4 {
     list-style-type: none;
 }
 
-.previewGuess {
+#previewGuess {
     border: 1px solid gray;
     width: 50%;
     margin: 0 auto;
     background-color: white;
+    display: none;
 }
 
 
@@ -209,6 +210,21 @@ h4 {
     height: 100vh;
 }
 
+#difficultyOptions {
+    display: none;
+    font-size: 2rem;
+    margin-top: 8rem;
+}
+
+#easy, #normal, #hard {
+    text-shadow: 3px 3px 3px black;
+    color: orange;
+}
+#easy:hover, #normal:hover, #hard:hover {
+    color:#2288DD;
+}
+
+
 #healthDiv {
     width: 60%;
     transform: rotate(180deg);
@@ -243,6 +259,7 @@ h4 {
     border-color: #2288DD;
     background-color: #2288DD;
     box-shadow: 1px 5px 8px black;
+    margin-top: 8rem;
 }
 
 
@@ -273,6 +290,7 @@ h4 {
 #roundDiv {
     color: red;
     text-shadow: 3px 3px 3px #2288DD;
+    display: none;
 }
 
 #roundDiv h2 {
@@ -379,7 +397,7 @@ h4 {
 
 /* RESPONSIVENESS FOR MOBILE */
 
-@media (max-width: 900px) {
+@media (max-width: 1260px) {
 
     body {
         overflow: auto;
@@ -412,7 +430,7 @@ h4 {
         position: relative;
     }
 
-    .previewGuess {
+    #previewGuess {
         width: 70%;
     }
 

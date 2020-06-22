@@ -1,4 +1,5 @@
 const   userGuess = document.getElementById('userGuess'),
+        previewGuess = document.getElementById('previewGuess'),
         previousGuess = document.getElementById('previousGuess'),
         previousCorrect = document.getElementById('previousCorrect'),
         lastResult = document.getElementById('lastResult'),
@@ -30,6 +31,7 @@ const   userGuess = document.getElementById('userGuess'),
 // PRE LOAD SETTINGS - STARTS ON EASY DIFFICULTY  //
 
 let difficultyMultiplier = 100;
+let difficultyPoints = 100;
 let randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
 let numOfHealth = 10;
 let numHealth = "";
@@ -51,8 +53,6 @@ function setHealth(){
 
 setHealth();
 
-easy.style.textDecoration = 'underline';
-
 // Function for Adding or Subtracting Health Icon
 
 
@@ -71,15 +71,9 @@ function gameOver() {
 // Logic when Start button is clicked
 
 function gameStart() {
-    gameInputs.style.display = 'block';
     startButton.style.display = 'none';
-    numRound.innerHTML = 1;
-    randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
-    cheat.innerHTML = randomNumber;
-    userGuess.focus();
-    currentPoints = 0;
-    diffOptions.style.display = 'none'
-    health.style.display = 'unset'  
+    diffOptions.style.display = 'block'
+    
 }
 
 // Checks if user input is wrong or correct //
@@ -130,11 +124,12 @@ function checkGuess() {
 
             numRound.innerHTML = roundNum++;
             
-            points.textContent = currentPoints += difficultyMultiplier;
+            points.textContent = currentPoints += difficultyPoints;
 
             randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
             cheat.innerHTML = randomNumber;
-
+            previousGuess.innerHTML = "New Random Number Generated"
+            prevGuess = []
             prevCorrect.push(` ${userGuess.value} ,`)
             
             for(let i = 0; i < prevCorrect.length; i++){
@@ -200,7 +195,10 @@ function gameReset() {
     prevCorrect = [];
     prevGuess = [];
     roundNum = 2;
-    diffOptions.style.display = 'block'
+    diffOptions.style.display = 'none'
+    roundDiv.style.display = 'none'
+    previewGuess.style.display = 'none'
+
 
 }
 
@@ -208,31 +206,60 @@ function gameReset() {
 
 function easyGame() {
     labelDifficulty.textContent = '1-100'
-    easy.style.textDecoration = 'underline'
-    normal.style.textDecoration = 'none'
-    hard.style.textDecoration = 'none'
+
     difficultyMultiplier = 100;
-    addHealth = 1;
-    gameReset();
+    difficultyPoints = 100;
+    addHealth = 2;
+    
+    gameInputs.style.display = 'block';
+    numRound.innerHTML = 1;
+    randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
+    cheat.innerHTML = randomNumber;
+    userGuess.focus();
+    currentPoints = 0;
+    health.style.display = 'unset' 
+    //Displays or hide displays
+    startButton.style.display = 'none'
+    diffOptions.style.display = 'none'
+    previewGuess.style.display = 'block'
+    roundDiv.style.display = 'block'
 }
 
 function normalGame() {
     labelDifficulty.textContent = '1-300'
-    easy.style.textDecoration = 'none'
-    normal.style.textDecoration = 'underline'
-    hard.style.textDecoration = 'none'
     difficultyMultiplier = 300;
-    addHealth = 2;
-    gameReset();
+    difficultyPoints = 150;
+    addHealth = 3;
+    
+    gameInputs.style.display = 'block';
+    numRound.innerHTML = 1;
+    randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
+    cheat.innerHTML = randomNumber;
+    userGuess.focus();
+    currentPoints = 0;
+    health.style.display = 'unset' 
+    startButton.style.display = 'none'
+    diffOptions.style.display = 'none'
+    previewGuess.style.display = 'block'
+    roundDiv.style.display = 'block'
 }
 function hardGame() {
     labelDifficulty.textContent = '1-600'
-    easy.style.textDecoration = 'none'
-    normal.style.textDecoration = 'none'
-    hard.style.textDecoration = 'underline'
     difficultyMultiplier = 600;
-    addHealth = 3;
-    gameReset();
+    difficultyPoints = 300;
+    addHealth = 4;
+    
+    gameInputs.style.display = 'block';
+    numRound.innerHTML = 1;
+    randomNumber = Math.floor((Math.random() * difficultyMultiplier) + 1);
+    cheat.innerHTML = randomNumber;
+    userGuess.focus();
+    currentPoints = 0;
+    health.style.display = 'unset'
+    startButton.style.display = 'none'
+    diffOptions.style.display = 'none'
+    previewGuess.style.display = 'block'
+    roundDiv.style.display = 'block'
 }
 
 // MODAL LOGIC //
